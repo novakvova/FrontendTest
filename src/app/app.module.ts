@@ -9,7 +9,7 @@ import {
   MatListModule,
   MatToolbarModule
  } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -20,13 +20,14 @@ import { HomeComponent } from './home.component';
 import { NavComponent } from './nav.component';
 import { QuizComponent } from './quiz.component';
 import { QuizzesComponent } from './quizzes.component';
+import { RegisterComponent } from './register.component';
 
 
 const routes = [
   {path: '', component: HomeComponent},
   {path: 'question', component: QuestionComponent},
   {path: 'question/:quizId', component: QuestionComponent},
-  {path: 'questions', component: QuestionsComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'quiz', component: QuizComponent}
 
 ];
@@ -39,13 +40,15 @@ const routes = [
     HomeComponent, 
     NavComponent,
     QuizComponent,
-    QuizzesComponent
+    QuizzesComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,

@@ -18,6 +18,7 @@ export class QuestionComponent {
   }
 
   post(question) {
+    question.quizId=this.quizId;
     this.api.postQuestion(question);
     //console.log(question);
   }
