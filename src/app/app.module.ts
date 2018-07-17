@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { 
   MatButtonModule, 
@@ -21,6 +21,8 @@ import { NavComponent } from './nav.component';
 import { QuizComponent } from './quiz.component';
 import { QuizzesComponent } from './quizzes.component';
 import { RegisterComponent } from './register.component';
+import { AuthService } from './auth.service';
+import { AuthInterceptor } from './auth.interceptor';
 
 
 const routes = [
@@ -56,7 +58,11 @@ const routes = [
     MatListModule,
     MatToolbarModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, AuthService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
